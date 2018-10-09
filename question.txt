@@ -1,0 +1,41 @@
+Unbiased estimator with known asymptotic distribution for variance of Beta random variable from Binomial realisations
+
+Consider random variables $P_1, \dots, P_N$ such that
+$$ P_i \sim Beta(\alpha, \beta) $$
+
+Furthermore consider random variables
+$$ X_{i} \sim Bernoulli(P_i) $$
+
+Given for each $X_i$, we have $n$ realisations
+$$ x_{i1}, \dots, x_{in} $$
+
+I want to find an unbiased estimator with known asymptotic distribution, for 
+$$ var(P_1) = var(P_2) = \dots = var(P_N) := var(P) $$
+from the set of observations $\{x_{ij} | 1 \leq i \leq N, 1 \leq j \leq n\}$. Note that we know
+$$ var(P) = \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)} $$
+the variance of a Beta distributed random variable.
+
+Finding this estimator for 
+$$ \mathbb{E}[P_1] = \mathbb{E}[P_2] = \dots = \mathbb{E}[P_N] := \mathbb{E}[P] $$ 
+was fairly easy. Noting again that from our Beta distribution,
+$$ \mathbb{E}[P] = \frac{\alpha}{(\alpha + \beta)} $$
+
+Then, if we define
+$$ Z_i = \sum_{j=1}^n X_{ij} \sim Binomial(n, P_i) $$
+and
+$$ \hat{\mu}_1 = \frac{1}{N} \sum_{i=1}^N Z_i/n $$
+then as $N \rightarrow \infty$, by the CLT
+$$ \hat{\mu}_1 \sim \mathcal{N}(\frac{\mathbb{E}[Z_i]}{n}, \frac{var(Z_i)}{Nn^2}) $$
+
+Now $\mathbb{E}[Z_i]/n = \frac{\alpha}{\alpha + \beta}$, so in fact $\hat{\mu}_1$ is an unbiased estimator of $\mathbb{E}[P]$ with known asymptotic distribution.
+
+However when trying a similar approach for $var(P)$, I couldn't see the right steps to take. Define
+$$ \hat{\mu}_2 = \frac{1}{N} \sum_{i=1}^N (Z_i/n)^2 $$
+then as $N \rightarrow \infty$, by the CLT
+$$ \hat{\mu}_2 \sim \mathcal{N}(\frac{\mathbb{E}[Z_i^2]}{n^2}, \frac{var(Z_i^2)}{Nn^4}) $$
+
+By checking the raw 2nd moment of a Beta-Binomial distribution (reference). we find
+$$ \mathbb{E}[Z_i^2] = \frac{n \alpha (\beta + n \alpha + n)}{(\alpha + \beta) (\alpha + \beta + 1)} $$
+
+
+I don't know see any way of combining the $\hat{\mu}_1$ and $\hat{\mu}_2$ to get an unbiased estimator for $var(P)$ with known asymptotic distribution. What would be the next steps I should take?
