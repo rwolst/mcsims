@@ -359,9 +359,18 @@ $$ \Rightarrow 8 \cdot 0.0005^2 n^2 N > 1.96^2(n(3n+1) -2n^2 )$$
   \Rightarrow \frac{8 \cdot 0.0005^2}{1.96^2} n^2 N - n^2 - n > 0
 \end{equation}
 
-where we used $\Phi^{-1}(0.975) = 1.96$.
+where we used $\Phi^{-1}(0.975) = 1.96$. Note that we can rearrange and using
+the fact $n, N > 0$, we get
 
-If we use a few different values of $n$ we can get corresponding $N$ values necessary to be within the limits.
+$$ \frac{8 \cdot 0.0005^2}{1.96^2}  N - 1 > \frac{1}{n} $$
+
+which means that $N$ must satisfy
+
+$$ N > \frac{1.96^2}{8 \cdot 0.0005^2} = 1920800 $$
+
+Of course if we use near the minimal value of $N$, it could result in extremely
+large $n$ values. If instead we use a few different values of $n$ we can get
+corresponding $N$ values necessary to be within the limits.
 
 \begin{table}[hbt]
 \caption{Table of $N$ satisfying (\ref{eqn.example}) for different $n$}
