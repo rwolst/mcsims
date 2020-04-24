@@ -19,3 +19,7 @@ regions.
 
 ## Code
 Included is code for testing that our confidence regions are indeed correct.
+
+## Paper
+See `latex/MCSims.pdf` for the (hopefully if I remembered to build) latest
+version of the paper.
